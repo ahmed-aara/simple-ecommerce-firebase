@@ -1,0 +1,29 @@
+<div class="nav">
+    <p class="blackBG_ whiteC_ small_ text-center m-0">{{userData.name}}</p>
+    <div class="uk-container">
+        <nav class="uk-navbar-container uk-margin" uk-navbar>
+
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">Task</a>
+            </div>
+
+            <div class="uk-navbar-center">
+                <ul class="uk-navbar-nav">
+                    <li><a routerLink="/">Home</a></li>
+                    <li><a routerLink="/register">Register</a></li>
+                    <li><a routerLink="/login">Login</a></li>
+                    <li><a routerLink="/cart"><span class="uk-icon uk-margin-small-right"
+                                uk-icon="icon: cart"></span>Cart</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="uk-navbar-right">
+                <a *ngIf="userData.type === 'seller'" routerLink="/dashboard"
+                    class="uk-button uk-button-default px-2">Dashboard</a>
+                <button (click)="logout()" class="uk-button uk-button-danger px-3">Logout</button>
+            </div>
+
+        </nav>
+    </div>
+</div>

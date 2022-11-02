@@ -1,0 +1,103 @@
+<section *ngIf="loaded" class="py-3">
+
+    <div class="uk-container">
+
+        <button (click)="defaultValue()"
+            class="uk-button uk-button-primary" attr.uk-toggle="target: #modal-add-product_{{genertare_id_element}}">Add Product</button>
+
+        <div class="uk-grid-small uk-child-width-1-4@l mt-3" uk-grid>
+
+            <div *ngFor="let item of productArr">
+
+                <div class="product_ p-3">
+                    <h3 class="f_Light">{{item.name}}</h3>
+                    <div class="line_ mb-1 mt-2"></div>
+
+                    <div class="uk-flex mb-3">
+                        <div *ngFor="let item of item.color" [ngClass]="item.color" class="box_color mr-1"
+                            attr.uk-tooltip="{{item.price + ' EGP'}}"></div>
+                    </div>
+
+                    <button (click)="one(item.id)"
+                        class="uk-button greenBG_ whiteC_ uk-button-small full_w mb-1">update</button>
+                    <button (click)="delete(item.id)"
+                        class="uk-button uk-button-danger uk-button-small full_w">delete</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div id="modal-add-product_{{genertare_id_element}}" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body p-3">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">Add Product</h2>
+
+        <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
+
+            <div>
+                <input class="uk-input" type="text" placeholder="Name..." [(ngModel)]="productData.name">
+            </div>
+
+            <div class="uk-width-1-2@l">
+                <ng-select [items]="colorArr" bindLabel="title" bindValue="value" placeholder="Color..."
+                    [(ngModel)]="colorData.color">
+                </ng-select>
+            </div>
+
+            <div class="uk-width-1-4@l">
+                <input onkeypress="validate(event)" class="uk-input" type="text" placeholder="Price..."
+                    [(ngModel)]="colorData.price">
+            </div>
+
+            <div class="uk-width-expand@l">
+                <button (click)="updateSetting.color? updateColor(): addColor()"
+                    [ngClass]="updateSetting.color? 'greenBG_':'blueBG_'"
+                    class="uk-button whiteC_ full_w">{{updateSetting.color ?
+                    'Update' :
+                    'Add'}}</button>
+            </div>
+
+            <div>
+                <div class="line_ full_w"></div>
+            </div>
+
+            <div>
+                <table class="uk-table uk-table-small uk-table-divider">
+                    <thead>
+                        <tr>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of productData.color; let i = index">
+                            <td>{{item.color | titlecase}}</td>
+                            <td>{{item.price}}EGP</td>
+                            <td>
+                                <span class="cursor mr-1" (click)="oneColor(i)" uk-icon="icon: pencil"></span>
+                                <span class="cursor ml-1" (click)="deleteColor(i)" uk-icon="icon: trash"></span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <button (click)="updateSetting.product? update(): add()"
+                    [ngClass]="updateSetting.product? 'greenBG_' : 'blueBG_'"
+                    class="uk-button whiteC_ full_w">{{updateSetting.product? 'Update' : 'Add'}}</button>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

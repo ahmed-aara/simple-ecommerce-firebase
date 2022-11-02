@@ -28,22 +28,33 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/uikit/dist/css/uikit.min.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
+              "src/assets/localFile/margin_padding.css",
+              "src/assets/localFile/color.css",
+              "src/assets/localFile/general.css",
+              "src/assets/localFile/mine.css",
+              "src/assets/localFile/font.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/uikit/dist/js/uikit.min.js",
+              "node_modules/uikit/dist/js/uikit-icons.min.js",
+              "src/assets/localFile/options.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "5mb"
                 }
               ],
               "fileReplacements": [
@@ -99,6 +110,16 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "task-mentorseven:build:production",
+            "firebaseProject": "mentorseven-23646",
+            "firebaseHostingSite": "mentorseven-23646"
           }
         }
       }

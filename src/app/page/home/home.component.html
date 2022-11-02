@@ -1,0 +1,102 @@
+<section class="sec_1">
+
+    <div class="uk-container">
+
+        <div class="uk-grid-small uk-child-width-1-4@l mt-3" uk-grid>
+
+            <div *ngFor="let item of productArr">
+
+                <div class="product_ p-3">
+                    <h3 class="f_Light">{{item.name}}</h3>
+                    <div class="line_ mb-1 mt-2"></div>
+
+                    <div class="uk-flex">
+                        <div *ngFor="let item of item.color" [ngClass]="item.color" class="box_color mr-1"
+                            attr.uk-tooltip="{{item.price + ' EGP'}}"></div>
+                    </div>
+
+                    <p class="small_ mb-3 grayC_ mt-1">put mouse on color</p>
+
+                    <button (click)="oneProduct(item.id)" class="uk-button greenBG_ whiteC_ full_w">Add
+                        Cart</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div id="modal-product_{{genertare_id_element}}" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body p-3">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="mb-2">Product</h2>
+
+        <div class="uk-grid-small uk-child-width-1-1@l mt-3" uk-grid>
+
+            <div>
+                <h3>{{productData.name}}</h3>
+            </div>
+
+            <div>
+                <div class="uk-flex">
+                    <div *ngFor="let item of productData.color" [ngClass]="item.color" class="box_color mr-1"
+                        attr.uk-tooltip="{{item.price + ' EGP'}}"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="line_ full_w"></div>
+            </div>
+
+            <div>
+                <h4 class="mb-1 blueC_">Add Cart</h4>
+                <ng-select [items]="productData.color" bindLabel="color" (change)="select()"
+                    placeholder="Choose Color..." [(ngModel)]="selectColor">
+                </ng-select>
+            </div>
+
+            <div *ngIf="selectColor !== null">
+                <table class="uk-table uk-table-small">
+                    <tbody>
+                        <tr>
+                            <td class="text-left px-0 py-1">Price</td>
+                            <td class="text-right px-0 py-1">{{num(selectColor.price)}} EGP</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left px-0 py-1">Tax</td>
+                            <td class="text-right px-0 py-1">{{num(selectColor.price) === null? '-' : num(selectColor.price) *
+                                (0.1)}} EGP</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left px-0 py-1">Delevery</td>
+                            <td class="text-right px-0 py-1">5 EGP</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="uk-grid-small uk-child-width-1-2@l uk-flex uk-flex-middle mt-1" uk-grid>
+
+                    <div>
+                        <h3 class="f_Light blueC_ text-left">Total</h3>
+                    </div>
+
+                    <div>
+                        <h3 class="text-right f_Bold">{{cartData.total}} EGP</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+                <button (click)="addCart()" class="uk-button uk-button-primary full_w">Add Cart</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<section class="sec_cart py-4">
+
+    <div class="uk-container">
+
+        <p class="uk-heading-small f_ExtraLight">Cart</p>
+
+        <div class="uk-grid-small uk-child-width-1-4@l mt-3" uk-grid>
+
+            <div *ngFor="let item of cartArr">
+
+                <div [ngClass]="item.color" class="product_ p-3">
+                    <h4 class="whiteC_ f_Light">Product Color {{item.color}}</h4>
+                    <div class="whiteBG_ line_ mb-1 mt-2"></div>
+                    <h5 class="whiteC_ f_Light">price {{item.total}} EGP</h5>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

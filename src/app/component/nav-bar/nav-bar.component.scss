@@ -1,0 +1,11 @@
+.nav {
+    background-color: #f8f8f8;
+}
+
+.nav .uk-navbar-left,
+.uk-navbar-right,
+[class*="uk-navbar-center"] {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}

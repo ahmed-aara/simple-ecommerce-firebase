@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mentorseven-23646": {
+      "hosting": {
+        "task-mentorseven": [
+          "mentorseven-23646"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mentorseven-23646"
+  }
+}

@@ -1,0 +1,45 @@
+<div class="py-4">
+
+    <div class="uk-flex uk-flex-center">
+
+        <div class="card_ uk-width-1-3@l p-3">
+
+            <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
+
+                <div>
+                    <h2 class="f_Light">Create Account</h2>
+                </div>
+
+                <div>
+                    <input class="uk-input mb-1" type="text" placeholder="Name..." [(ngModel)]="userData.name">
+                </div>
+
+                <div>
+                    <input class="uk-input" type="text" placeholder="Email..." [(ngModel)]="userData.email">
+                </div>
+
+                <div>
+                    <input class="uk-input" type="text" placeholder="Password..." [(ngModel)]="userData.password">
+                </div>
+
+                <div>
+                    <ng-select [items]="type" bindLabel="title" bindValue="value" placeholder="Type Account..."
+                        [(ngModel)]="userData.type">
+                    </ng-select>
+                </div>
+
+                <div>
+                    <button class="uk-button uk-button-primary full_w" (click)="register()">Register</button>
+                </div>
+
+                <div *ngIf="message !== null">
+                    <p>{{message}}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
